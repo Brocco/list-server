@@ -23,5 +23,5 @@ class IdMaker {
     return IdMaker.lastId += 1;
   }
 
-  private static lastId = 1;
+  private static lastId = 0;
 }
