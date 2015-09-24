@@ -18,6 +18,15 @@ export default class App {
 		var app = express();
 		app.use(bodyParser.json());
 
+    app.use((req: express.Request, res: express.Response, next?: Function) => {
+      res.header('Access-Control-Allow-Origin', '*');
+      res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+      res.header('Access-Control-Allow-Headers', 'Authorization, Content-Type, token');
+      res.header('Cache-control', 'no-store');
+      res.header('Pragma', 'no-cache');
+      next();
+    });
+
 		app.use('/list', (new ListRoute()).getRoutes());
 
 		return app;
