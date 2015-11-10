@@ -23,6 +23,7 @@ export default class LinkRoute {
   }
 
   public getLists (req, res, next) {
+    console.log('getLists');
     let lists = DataStore.getLists();
     res.status(200).json(lists);
   }
@@ -30,6 +31,7 @@ export default class LinkRoute {
   public getList (req: Req, res: Res, next?: Function) {
     try{
       let id = parseInt(req.params.listId);
+      console.log('getList id: ', id);
       let list = DataStore.getList(id);
       res.status(200).json(list);
     } catch(err){
@@ -39,6 +41,7 @@ export default class LinkRoute {
 
   public newList (req: Req, res: Res, next?: Function) {
     let listName = <string>req.body.name;
+    console.log('newList name: ', listName);
     let list = DataStore.newList(listName);
     res.status(201).json(list);
   }
